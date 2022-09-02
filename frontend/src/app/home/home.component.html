@@ -1,7 +1,7 @@
 <h5>Sobre site cadastro</h5>
 <p>Site de registro de clientes</p>
 
-<div class="container-sm text-left  ">
+<div class="container-sm text-left">
 
   <div class="row">
 
@@ -25,15 +25,19 @@
               <th scope="col">Contato</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td scope="row">id</td>
-              <td scope="row">nome</td>
-              <td scope="row">email</td>
-              <td scope="row">contato</td>
+          <tbody *ngIf="clientes?.length > 0; else listaVazia">
+            <tr *ngFor="let cliente of clientes">
+              <td scope="row">{{clientes.pis}}</td>
+              <td scope="row">{{clientes.nome}}</td>
+              <td scope="row">{{clientes.email}}</td>
+              <td scope="row">{{clientes.contato}}</td>
             </tr>
           </tbody>
         </table>
+
+        <ng-template #listaVazia>
+          <p>Nenhuma cliente registrado</p>
+        </ng-template>
 
       </div>
 

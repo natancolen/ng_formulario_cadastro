@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ListaClientesService } from './../lista-clientes/lista-clientes.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  clientes: any;
 
-  constructor() { }
+  constructor(private service: ListaClientesService) { }
 
   ngOnInit(): void {
+    this.clientes = this.service.clientes;
   }
 
 }
