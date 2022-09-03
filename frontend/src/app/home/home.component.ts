@@ -9,10 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HomeComponent implements OnInit {
   clientes: any;
 
-  constructor(private service: ListaClientesService) { }
+  constructor(private service: ListaClientesService) {
+    this.clientes = this.service;
+  }
 
   ngOnInit(): void {
-    this.clientes = this.service.clientes;
   }
 
   registrarCliente($event: any) {

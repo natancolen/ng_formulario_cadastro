@@ -1,5 +1,6 @@
+import { TabelaCadastroComponent } from './../tabela-cadastro/tabela-cadastro.component';
+import { ListaClientesService } from './../lista-clientes/lista-clientes.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
@@ -7,7 +8,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
-  @Output() aoListaDeClientes = new EventEmitter<any>();
+  @Output() aoListaDeClientes: EventEmitter<any> = new EventEmitter();
 
   nome: string = '';
   sobrenome: string = '';
@@ -26,11 +27,9 @@ export class CadastroComponent implements OnInit {
       email: this.email, telefone: this.telefone
     };
 
-    console.log(this.aoListaDeClientes);
-
     this.aoListaDeClientes.emit(clienteEmitir);
 
-    console.log(`Cadastro componente - Registrar`);
+    console.log(`app-cadastro-component - Registrar`);
 
     this.limparRegistro();
   }
