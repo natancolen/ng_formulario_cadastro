@@ -15,4 +15,9 @@ export class HomeComponent implements OnInit {
     this.clientes = this.service.clientes;
   }
 
+  registrarCliente($event: any) {
+    this.clientes.adicionar($event);
+    console.log('app-home-component - Registrar cliente');
+  }
+
 }

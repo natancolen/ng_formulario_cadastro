@@ -26,6 +26,8 @@ export class CadastroComponent implements OnInit {
       email: this.email, telefone: this.telefone
     };
 
+    console.log(this.aoListaDeClientes);
+
     this.aoListaDeClientes.emit(clienteEmitir);
 
     console.log(`Cadastro componente - Registrar`);

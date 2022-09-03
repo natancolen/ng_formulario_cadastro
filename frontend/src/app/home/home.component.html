@@ -16,28 +16,7 @@
           <h5>Lista de Clientes</h5>
         </div>
 
-        <table class="table table-striped-colums">
-          <thead>
-            <tr class="table-dark">
-              <th scope="col">Id</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Email</th>
-              <th scope="col">Contato</th>
-            </tr>
-          </thead>
-          <tbody *ngIf="clientes?.length > 0; else listaVazia">
-            <tr *ngFor="let cliente of clientes">
-              <td scope="row">{{clientes.pis}}</td>
-              <td scope="row">{{clientes.nome}}</td>
-              <td scope="row">{{clientes.email}}</td>
-              <td scope="row">{{clientes.contato}}</td>
-            </tr>
-          </tbody>
-        </table>
 
-        <ng-template #listaVazia>
-          <p>Nenhuma cliente registrado</p>
-        </ng-template>
 
       </div>
 
@@ -46,3 +25,4 @@
   </div>
 
 </div>
+<app-tabela-cadastro (aoListaDeClientes)="registrarCliente($event)"></app-tabela-cadastro>
