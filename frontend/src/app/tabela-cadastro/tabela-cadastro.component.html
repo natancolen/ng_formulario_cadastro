@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody *ngIf="clientes?.length > 0; else listaVazia">
-    <tr *ngFor="let cliente of clientes">
-      <td scope="row">{{clientes.pis}}</td>
-      <td scope="row">{{clientes.nome}}</td>
-      <td scope="row">{{clientes.email}}</td>
-      <td scope="row">{{clientes.contato}}</td>
+    <tr *ngFor="let cliente of this.clientes">
+      <td scope="row">{{cliente.pis}}</td>
+      <td scope="row">{{cliente.nome}}</td>
+      <td scope="row">{{cliente.email}}</td>
+      <td scope="row">{{cliente.telefone}}</td>
     </tr>
   </tbody>
 </table>

@@ -1,5 +1,5 @@
 import { TabelaCadastroComponent } from './../tabela-cadastro/tabela-cadastro.component';
-import { ListaClientesService } from './../lista-clientes/lista-clientes.service';
+import { ListaClientesService } from '../lista-clientes/lista-clientes.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -16,18 +16,18 @@ export class CadastroComponent implements OnInit {
   email: string = '';
   telefone: string = '';
 
-  constructor() { }
+  constructor(private listaClienteService: ListaClientesService) { }
 
   ngOnInit(): void {
   }
 
   registrar() {
-    const clienteEmitir = {
+    const cliente = {
       nome: this.nome, sobrenome: this.sobrenome, pis: this.pis,
       email: this.email, telefone: this.telefone
     };
 
-    this.aoListaDeClientes.emit(clienteEmitir);
+    this.listaClienteService.adicionar(cliente);
 
     console.log(`app-cadastro-component - Registrar`);
 

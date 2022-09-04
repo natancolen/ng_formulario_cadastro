@@ -18,6 +18,7 @@ export class ListaClientesService {
     const listaCliente = { ...$event };
     this.listaDeClientes.push(listaCliente);
 
+
     console.log('lista-clientes service - Registrar cliente');
   }
 }

@@ -1,4 +1,4 @@
-import { ListaClientesService } from './../lista-clientes/lista-clientes.service';
+import { ListaClientesService } from '../lista-clientes/lista-clientes.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,18 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  clientes: any;
+  @Input() clientes: any;
 
-  constructor(private service: ListaClientesService) {
-    this.clientes = this.service;
+  constructor(private listaClienteService: ListaClientesService) {
   }
 
   ngOnInit(): void {
-  }
-
-  registrarCliente($event: any) {
-    this.clientes.adicionar($event);
-    console.log('app-home-component - Registrar cliente');
   }
 
 }

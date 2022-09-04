@@ -1,4 +1,4 @@
-import { ListaClientesService } from './../lista-clientes/lista-clientes.service';
+import { ListaClientesService } from '../lista-clientes/lista-clientes.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
