@@ -1,11 +1,12 @@
 import { TabelaCadastroComponent } from './../tabela-cadastro/tabela-cadastro.component';
 import { ListaClientesService } from '../lista-clientes/lista-clientes.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent implements OnInit {
   @Output() aoListaDeClientes: EventEmitter<any> = new EventEmitter();
@@ -16,15 +17,20 @@ export class CadastroComponent implements OnInit {
   email: string = '';
   telefone: string = '';
 
-  constructor(private listaClienteService: ListaClientesService) { }
+  constructor(
+    private listaClienteService: ListaClientesService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   registrar() {
     const cliente = {
-      nome: this.nome, sobrenome: this.sobrenome, pis: this.pis,
-      email: this.email, telefone: this.telefone
+      nome: this.nome,
+      sobrenome: this.sobrenome,
+      pis: this.pis,
+      email: this.email,
+      telefone: this.telefone,
     };
 
     this.listaClienteService.adicionar(cliente);
@@ -32,10 +38,11 @@ export class CadastroComponent implements OnInit {
     console.log(`app-cadastro-component - Registrar`);
 
     this.limparRegistro();
+
+    this.router.navigate(['']);
   }
 
   limparRegistro() {
     this.nome = this.sobrenome = this.pis = this.telefone = this.email = '';
   }
-
 }
