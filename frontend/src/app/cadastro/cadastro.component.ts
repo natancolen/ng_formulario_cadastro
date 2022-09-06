@@ -39,7 +39,7 @@ export class CadastroComponent implements OnInit {
 
     this.limparRegistro();
 
-    this.router.navigate(['']);
+    this.router.navigate(['tabela-cadastro']);
   }
 
   limparRegistro() {

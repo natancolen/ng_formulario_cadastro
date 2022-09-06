@@ -26,6 +26,10 @@ export class ListaClientesService {
     }
   }
 
+  atualizar(cliente: any, posicao: number) {
+    this.listaDeClientes[posicao] = cliente;
+  }
+
   tamanhoDaLista() {
     return this.listaDeClientes.length;
   }
@@ -39,12 +43,30 @@ export class ListaClientesService {
     return;
   }
 
+  posicaoCliente(cliente: any) {
+    for (let i = 0; i < this.listaDeClientes.length; i++) {
+      if (cliente.pis == this.listaDeClientes[i].pis) {
+        return i;
+      }
+    }
+
+    return console.log('Não é cadastrado');
+  }
+
   private verificarClienteCadastrado(cliente: any) {
     let cadastrado = false;
 
-    for (let i = 0; i < this.listaDeClientes.length; i++) {
-      if (!cadastrado) {
+    if (!cadastrado) {
+      for (let i = 0; i < this.listaDeClientes.length; i++) {
         if (cliente.pis == this.listaDeClientes[i].pis) {
+          cadastrado = true;
+          return true;
+        }
+        if (cliente.email == this.listaDeClientes[i].email) {
+          cadastrado = true;
+          return true;
+        }
+        if (cliente.telefone == this.listaDeClientes[i].telefone) {
           cadastrado = true;
           return true;
         }

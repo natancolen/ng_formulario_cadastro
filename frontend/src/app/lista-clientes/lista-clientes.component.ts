@@ -1,3 +1,4 @@
+import { ClienteService } from './../cliente/cliente.service';
 import { ListaClientesService } from './lista-clientes.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -9,7 +10,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ListaClientesComponent implements OnInit {
   @Input() clientes: any;
 
-  constructor() {}
+  constructor(
+    private clienteService: ClienteService,
+    private listaClienteService: ListaClientesService
+  ) {}
+
+  clienteEscolhido() {}
 
   ngOnInit(): void {}
 }
