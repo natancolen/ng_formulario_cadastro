@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent implements OnInit {
-  @Output() aoListaDeClientes: EventEmitter<any> = new EventEmitter();
+  //@Output() aoListaDeClientes: EventEmitter<any> = new EventEmitter();
 
   nome: string = '';
   sobrenome: string = '';

@@ -27,7 +27,13 @@ export class ListaClientesService {
   }
 
   atualizar(cliente: any, posicao: number) {
-    this.listaDeClientes[posicao] = cliente;
+    console.log('atualizar-listacliente ' + cliente.nome);
+
+    this.listaDeClientes[posicao].nome = cliente.nome;
+    this.listaDeClientes[posicao].sobrenome = cliente.sobrenome;
+    this.listaDeClientes[posicao].pis = cliente.pis;
+    this.listaDeClientes[posicao].email = cliente.email;
+    this.listaDeClientes[posicao].telefone = cliente.telefone;
   }
 
   tamanhoDaLista() {

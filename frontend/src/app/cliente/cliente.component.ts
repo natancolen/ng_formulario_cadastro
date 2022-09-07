@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { ListaClientesService } from './../lista-clientes/lista-clientes.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ClienteService } from './cliente.service';
 
 @Component({
@@ -8,8 +9,7 @@ import { ClienteService } from './cliente.service';
   styleUrls: ['./cliente.component.css'],
 })
 export class ClienteComponent implements OnInit {
-  clientes: any;
-  cliente: any;
+  @Input() cliente: any;
 
   nome: string = '';
   sobrenome: string = '';
@@ -17,14 +17,13 @@ export class ClienteComponent implements OnInit {
   email: string = '';
   telefone: string = '';
 
-  constructor(
-    private listaClientesService: ListaClientesService,
-    private clienteService: ClienteService
-  ) {
+  constructor(private clienteService: ClienteService, private router: Router) {
     this.cliente = clienteService;
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  dadosInput() {
     if (this.clienteService != null) {
       this.nome = this.clienteService.cliente.nome;
       this.sobrenome = this.clienteService.cliente.sobrenome;
@@ -46,5 +45,23 @@ export class ClienteComponent implements OnInit {
     this.clienteService.limparInformacao();
   }
 
-  atualizarCadastro() {}
+  atualizarCadastro() {
+    this.dadosInput();
+
+    this.cliente.nome = this.nome;
+    this.cliente.sobrenome = this.sobrenome;
+    this.cliente.pis = this.pis;
+    this.cliente.email = this.email;
+    this.cliente.telefone = this.telefone;
+
+    const clienteAtualizado = this.cliente;
+
+    console.log(clienteAtualizado.sobrenome);
+
+    this.clienteService.atualizarCadastro(clienteAtualizado);
+
+    this.limparDadosInput();
+
+    this.router.navigate(['/home']);
+  }
 }
