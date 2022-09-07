@@ -9,7 +9,7 @@
   </thead>
   <tbody *ngIf="clientes?.length > 0; else listaVazia">
     <tr *ngFor="let cliente of this.clientes">
-      <td scope="row">{{cliente.pis}}</td>
+      <td scope="row"><a (click)="clienteEscolhido(cliente)" [routerLink]="['/cliente']">{{cliente.pis}}</a> </td>
       <td scope="row">{{cliente.nome +' '+ cliente.sobrenome}}</td>
       <td scope="row">{{cliente.email}}</td>
       <td scope="row">{{cliente.telefone}}</td>

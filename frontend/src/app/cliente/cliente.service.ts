@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ClienteService {
   private clienteAtual: any;
+  private semInformacao: any;
   private posicaoDaListaCliente: number = -1;
   constructor(private listaClienteService: ListaClientesService) {}
 
@@ -17,12 +18,17 @@ export class ClienteService {
     return this.clienteAtual;
   }
 
-  clienteEscolhido(cliente: any, posicao: number) {
+  clienteEscolhido(cliente: any) {
     this.clienteAtual = cliente;
-    this.posicaoDaListaCliente = posicao;
+    this.posicaoDaListaCliente =
+      this.listaClienteService.posicaoCliente(cliente);
   }
 
   atualizarCadastro(cliente: any) {
     this.listaClienteService.atualizar(cliente, this.posicaoDaListaCliente);
+  }
+
+  limparInformacao() {
+    this.clienteAtual = this.semInformacao;
   }
 }

@@ -50,7 +50,7 @@ export class ListaClientesService {
       }
     }
 
-    return console.log('Não é cadastrado');
+    return -1;
   }
 
   private verificarClienteCadastrado(cliente: any) {
