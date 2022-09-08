@@ -17,22 +17,24 @@ export class ClienteComponent implements OnInit {
   email: string = '';
   telefone: string = '';
 
-  constructor(private clienteService: ClienteService, private router: Router) {
-    this.cliente = clienteService;
+  novoNome: string = '';
+  novoSobrenome: string = '';
+  novoPis: string = '';
+  novoEmail: string = '';
+  novoTelefone: string = '';
+
+  constructor(private clienteService: ClienteService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.dadosInput();
   }
 
-  ngOnInit(): void {}
-
   dadosInput() {
-    if (this.clienteService != null) {
-      this.nome = this.clienteService.cliente.nome;
-      this.sobrenome = this.clienteService.cliente.sobrenome;
-      this.pis = this.clienteService.cliente.pis;
-      this.email = this.clienteService.cliente.email;
-      this.telefone = this.clienteService.cliente.telefone;
-    } else {
-      this.limparDadosInput();
-    }
+    this.nome = this.clienteService.cliente.nome;
+    this.sobrenome = this.clienteService.cliente.sobrenome;
+    this.pis = this.clienteService.cliente.pis;
+    this.email = this.clienteService.cliente.email;
+    this.telefone = this.clienteService.cliente.telefone;
   }
 
   limparDadosInput() {
@@ -46,17 +48,23 @@ export class ClienteComponent implements OnInit {
   }
 
   atualizarCadastro() {
-    this.dadosInput();
+    // const clienteAtualizado = {
+    //   nome: this.novoNome,
+    //   sobrenome: this.novoSobrenome,
+    //   pis: this.novoPis,
+    //   email: this.novoEmail,
+    //   telefone: this.novoTelefone,
+    // };
 
-    this.cliente.nome = this.nome;
-    this.cliente.sobrenome = this.sobrenome;
-    this.cliente.pis = this.pis;
-    this.cliente.email = this.email;
-    this.cliente.telefone = this.telefone;
+    const clienteAtualizado = {
+      nome: this.nome,
+      sobrenome: this.sobrenome,
+      pis: this.pis,
+      email: this.email,
+      telefone: this.telefone,
+    };
 
-    const clienteAtualizado = this.cliente;
-
-    console.log(clienteAtualizado.sobrenome);
+    console.log(clienteAtualizado.email);
 
     this.clienteService.atualizarCadastro(clienteAtualizado);
 
