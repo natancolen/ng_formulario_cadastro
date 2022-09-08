@@ -1,42 +1,37 @@
 <div class="container-fluid">
   <h4>Cliente</h4><br>
-  <form (ngSubmit)="atualizarCadastro()">
-    <div class="container mb-4">
-      <div class="row">
-        <h6>Dados pessoais cliente</h6>
-        <div class="col-2">
-          <label for="form-label">Nome</label>
-          <input type="text" class="form-control" placeholder="{{nome}}" [(ngModel)]="nome" name="nome">
-        </div>
-        <div class="col-4">
-          <label for="form-label">Sobrenome</label>
-          <input type="text" class="form-control" placeholder="{{sobrenome}}" [(ngModel)]="sobrenome" name="sobrenome">
-        </div>
-        <div class="col-4">
-          <label for="form-label">PIS</label>
-          <input type="text" class="form-control" placeholder="{{pis}}" [(ngModel)]="pis" name="pis">
-        </div>
-      </div><br>
-
-      <div class="row">
-        <h6>Contato do cliente</h6>
-        <div class="col-6">
-          <label for="form-label">Email</label>
-          <input type="text" class="form-control" placeholder="{{email}}" [(ngModel)]="email" name="email">
-        </div>
-        <div class="col-4">
-          <label for="form-label">Telefone</label>
-          <input type="text" class="form-control" placeholder="{{telefone}}" [(ngModel)]="telefone" name="telefone">
-        </div>
-      </div><br>
-
-      <div class="row">
-        <div class="col"><button type="submit" class="btn-block">Salvar</button></div>
-        <div class="col"><button button class="btn-block">Deletar</button></div>
+  <div class="container mb-4">
+    <div class="row">
+      <h6>Dados pessoais cliente</h6>
+      <div class="col-2">
+        <label for="form-label">Nome</label>
+        <input type="text" class="form-control" placeholder="{{nome}}" [(ngModel)]="nome" name="nome">
       </div>
+      <div class="col-4">
+        <label for="form-label">Sobrenome</label>
+        <input type="text" class="form-control" placeholder="{{sobrenome}}" [(ngModel)]="sobrenome" name="sobrenome">
+      </div>
+      <div class="col-4">
+        <label for="form-label">PIS</label>
+        <input type="text" class="form-control" placeholder="{{pis}}" [(ngModel)]="pis" name="pis">
+      </div>
+    </div><br>
 
+    <div class="row">
+      <h6>Contato do cliente</h6>
+      <div class="col-6">
+        <label for="form-label">Email</label>
+        <input type="text" class="form-control" placeholder="{{email}}" [(ngModel)]="email" name="email">
+      </div>
+      <div class="col-4">
+        <label for="form-label">Telefone</label>
+        <input type="text" class="form-control" placeholder="{{telefone}}" [(ngModel)]="telefone" name="telefone">
+      </div>
+    </div><br>
+
+    <div class="row">
+      <div class="col"><button (click)="atualizarCadastro()" class="btn-block">Salvar</button></div>
+      <div class="col"><button (click)="deletar()" button class="btn-block">Deletar</button></div>
     </div>
-  </form>
-
-
+  </div>
 </div>

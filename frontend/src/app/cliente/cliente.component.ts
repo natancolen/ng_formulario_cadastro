@@ -17,45 +17,13 @@ export class ClienteComponent implements OnInit {
   email: string = '';
   telefone: string = '';
 
-  novoNome: string = '';
-  novoSobrenome: string = '';
-  novoPis: string = '';
-  novoEmail: string = '';
-  novoTelefone: string = '';
-
   constructor(private clienteService: ClienteService, private router: Router) {}
 
   ngOnInit(): void {
     this.dadosInput();
   }
 
-  dadosInput() {
-    this.nome = this.clienteService.cliente.nome;
-    this.sobrenome = this.clienteService.cliente.sobrenome;
-    this.pis = this.clienteService.cliente.pis;
-    this.email = this.clienteService.cliente.email;
-    this.telefone = this.clienteService.cliente.telefone;
-  }
-
-  limparDadosInput() {
-    this.nome = '';
-    this.sobrenome = '';
-    this.pis = '';
-    this.email = '';
-    this.telefone = '';
-
-    this.clienteService.limparInformacao();
-  }
-
   atualizarCadastro() {
-    // const clienteAtualizado = {
-    //   nome: this.novoNome,
-    //   sobrenome: this.novoSobrenome,
-    //   pis: this.novoPis,
-    //   email: this.novoEmail,
-    //   telefone: this.novoTelefone,
-    // };
-
     const clienteAtualizado = {
       nome: this.nome,
       sobrenome: this.sobrenome,
@@ -71,5 +39,28 @@ export class ClienteComponent implements OnInit {
     this.limparDadosInput();
 
     this.router.navigate(['/home']);
+  }
+
+  dadosInput() {
+    this.nome = this.clienteService.cliente.nome;
+    this.sobrenome = this.clienteService.cliente.sobrenome;
+    this.pis = this.clienteService.cliente.pis;
+    this.email = this.clienteService.cliente.email;
+    this.telefone = this.clienteService.cliente.telefone;
+  }
+
+  deletar() {
+    console.log('Deletar-cliente');
+    this.router.navigate(['/home']);
+  }
+
+  limparDadosInput() {
+    this.nome = '';
+    this.sobrenome = '';
+    this.pis = '';
+    this.email = '';
+    this.telefone = '';
+
+    this.clienteService.limparInformacao();
   }
 }
