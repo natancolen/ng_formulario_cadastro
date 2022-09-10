@@ -36,8 +36,9 @@ export class ListaClientesService {
     this.listaDeClientes[posicao].telefone = cliente.telefone;
   }
 
-  tamanhoDaLista() {
-    return this.listaDeClientes.length;
+  deletarCliente(posicao: number) {
+    console.log(this.listaDeClientes[posicao].nome);
+    this.listaDeClientes.splice(posicao, 1);
   }
 
   imprimirCliente(posicao: number) {
@@ -57,6 +58,10 @@ export class ListaClientesService {
     }
 
     return -1;
+  }
+
+  tamanhoDaLista() {
+    return this.listaDeClientes.length;
   }
 
   private verificarClienteCadastrado(cliente: any) {

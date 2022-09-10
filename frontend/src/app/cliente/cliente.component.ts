@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
-import { ListaClientesService } from './../lista-clientes/lista-clientes.service';
+import { ListaClientesService } from '../services/lista-clientes.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { ClienteService } from './cliente.service';
+import { ClienteService } from '../services/cliente.service';
 
 @Component({
   selector: 'app-cliente',
@@ -51,6 +51,7 @@ export class ClienteComponent implements OnInit {
 
   deletar() {
     console.log('Deletar-cliente');
+    this.clienteService.deletar();
     this.router.navigate(['/home']);
   }
 

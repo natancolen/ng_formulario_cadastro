@@ -1,24 +1,20 @@
 import { TabelaCadastroModule } from './../tabela-cadastro/tabela-cadastro.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CadastroRoutingModule } from './cadastro-routing.module';
 import { CadastroComponent } from './cadastro.component';
 
-
 @NgModule({
-  declarations: [
-    CadastroComponent
-  ],
+  declarations: [CadastroComponent],
   imports: [
     CommonModule,
     CadastroRoutingModule,
+    TabelaCadastroModule,
     FormsModule,
-    TabelaCadastroModule
+    ReactiveFormsModule,
   ],
-  exports: [
-    CadastroComponent
-  ]
+  exports: [CadastroComponent],
 })
-export class CadastroModule { }
+export class CadastroModule {}

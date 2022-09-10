@@ -1,4 +1,4 @@
-import { ListaClientesService } from './../lista-clientes/lista-clientes.service';
+import { ListaClientesService } from './lista-clientes.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -26,6 +26,10 @@ export class ClienteService {
 
   atualizarCadastro(cliente: any) {
     this.listaClienteService.atualizar(cliente, this.posicaoDaListaCliente);
+  }
+
+  deletar() {
+    this.listaClienteService.deletarCliente(this.posicaoCliente);
   }
 
   limparInformacao() {

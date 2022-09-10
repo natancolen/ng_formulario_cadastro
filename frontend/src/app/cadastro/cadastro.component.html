@@ -4,45 +4,67 @@
     <h4>Faça o cadastro do cliente</h4>
   </div>
 
-  <form (ngSubmit)="registrar()">
+  <form [formGroup]="this.clientForm">
     <div class="mb-4">
       <h6>Nome e PIS</h6>
 
       <div class="row">
         <div class="col">
-          <input id="nome" type="text" class="form-control" placeholder="Nome" aria-label="Nome" [(ngModel)]="nome"
+          <label class="form-label">Nome</label>
+          <input id="nome" type="text" class="form-control" placeholder="Nome" aria-label="Nome" formControlName="nome"
             name="nome">
+          <div class="validation" *ngIf="!this.clientForm.get('nome')?.valid && this.clientForm.get('nome')?.touched">
+            {{invalidField}}
+          </div>
         </div>
-        <div class="col">
-          <input id="sobrenome" type="text" class="form-control" placeholder="Sobrenome" aria-label="Sobrenome"
-            [(ngModel)]="sobrenome" name="sobrenome">
-        </div>
-      </div><br>
 
-      <div class="form-control">
-        <input id="pis" type="text" placeholder="pis" [(ngModel)]="pis" name="pis">
-      </div><br>
+        <div class="col">
+          <label class="form-label">Sobrenome</label>
+          <input id="sobrenome" type="text" class="form-control" placeholder="Sobrenome" aria-label="Sobrenome"
+            formControlName="sobrenome" name="sobrenome">
+          <div class="validation"
+            *ngIf="!this.clientForm.get('sobrenome')?.valid && this.clientForm.get('sobrenome')?.touched">
+            {{invalidField}}
+          </div>
+
+        </div>
+
+        <div class="col">
+          <label class="form-label">PIS</label>
+          <input id="pis" class="form-control" type="text" placeholder="pis" ria-label="pis" formControlName="pis"
+            name="pis">
+          <div class="validation" *ngIf="!this.clientForm.get('pis')?.valid && this.clientForm.get('pis')?.touched">
+          </div>
+        </div>
+      </div>
+
+      <br>
 
       <h6>Contato</h6>
 
       <div class="row">
 
-        <div class="col">
+        <div class="col-sm-4">
           <label class="form-label">Email</label>
-          <input id="email" type="text" class="form-control" placeholder="name@email.com" [(ngModel)]="email"
+          <input id="email" type="email" class="form-control" placeholder="name@email.com" formControlName="email"
             name="email">
+          <div class="validation" *ngIf="!this.clientForm.get('email')?.valid && this.clientForm.get('email')?.touched">
+            {{invalidField}}</div>
         </div>
 
-        <div class="col">
+        <div class="col-sm-2">
           <label class="form-label">Telefone</label>
-          <input id="telefone" type="text" class="form-control" placeholder="(xx)xxxxx-xxxx" [(ngModel)]="telefone"
+          <input id="telefone" type="text" class="form-control" placeholder="(xx)xxxxx-xxxx" formControlName="telefone"
             name="telefone">
+          <div class="validation"
+            *ngIf="!this.clientForm.get('telefone')?.valid && this.clientForm.get('telefone')?.touched">{{invalidField}}
+          </div>
         </div>
 
       </div><br>
 
       <div>
-        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+        <button type="submit" class="btn btn-primary btn-block" (click)="this.registrar()">Registrar</button>
       </div>
     </div>
   </form>

@@ -1,7 +1,12 @@
-import { TabelaCadastroComponent } from './../tabela-cadastro/tabela-cadastro.component';
-import { ListaClientesService } from '../lista-clientes/lista-clientes.service';
+import { ListaClientesService } from '../services/lista-clientes.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import {
+  EmailValidator,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,12 +15,19 @@ import { Router } from '@angular/router';
 })
 export class CadastroComponent implements OnInit {
   //@Output() aoListaDeClientes: EventEmitter<any> = new EventEmitter();
+  public invalidField = 'Campo inválido!';
 
-  nome: string = '';
-  sobrenome: string = '';
-  pis: string = '';
-  email: string = '';
-  telefone: string = '';
+  public clientForm = new FormGroup({
+    nome: new FormControl('', Validators.required),
+    sobrenome: new FormControl('', Validators.required),
+    pis: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    telefone: new FormControl('', [
+      Validators.required,
+      Validators.minLength(11),
+      Validators.maxLength(11),
+    ]),
+  });
 
   constructor(
     private listaClienteService: ListaClientesService,
@@ -25,17 +37,12 @@ export class CadastroComponent implements OnInit {
   ngOnInit(): void {}
 
   registrar() {
-    const cliente = {
-      nome: this.nome,
-      sobrenome: this.sobrenome,
-      pis: this.pis,
-      email: this.email,
-      telefone: this.telefone,
-    };
+    if (!this.clientForm) {
+      alert(this.invalidField);
+      return;
+    }
 
-    this.listaClienteService.adicionar(cliente);
-
-    console.log(`app-cadastro-component - Registrar`);
+    this.listaClienteService.adicionar(this.clientForm.getRawValue());
 
     this.limparRegistro();
 
@@ -43,6 +50,6 @@ export class CadastroComponent implements OnInit {
   }
 
   limparRegistro() {
-    this.nome = this.sobrenome = this.pis = this.telefone = this.email = '';
+    this.clientForm.clearValidators();
   }
 }

@@ -1,5 +1,5 @@
-import { ClienteService } from './../cliente/cliente.service';
-import { ListaClientesService } from './lista-clientes.service';
+import { ClienteService } from '../services/cliente.service';
+import { ListaClientesService } from '../services/lista-clientes.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
